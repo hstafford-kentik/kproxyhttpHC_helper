@@ -1,0 +1,15 @@
+[Unit]
+Description=http wrapper for kproxy healthcheck
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/HChttpwrapper.py 0.0.0.0 80
+Restart=on-failure
+RestartSec=3
+## Restart on failure but wait 3 sec.
+
+[Install]
+WantedBy=multi-user.target
